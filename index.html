@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
     <link rel="stylesheet" href="styles.css">
     <title>JavaScript Library</title>
 </head>
@@ -15,13 +14,21 @@
         </div>
 
         <div class="sidebar">
+            <h2>We have <span class="bookCount">0</span> books in our library!</h2>
             <button class="newBook">New Book</button>
-            <h2>Book Count: <span class="bookCount">0</span></h2>
         </div>
 
         <div class="main">
-            <!-- Books added via button being pressed and info being input -->
+            <div class="cards">
+                <h3>Title: Harry Potter</h3>
+                <h4>Author: J.K. Rowling</h4>
+                <input>
+                <input>
+                <button class="removeBook"></button>
+            </div>
+            <!-- Books added via button being pressed and info being input ⬇️ -->
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

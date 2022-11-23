@@ -6,12 +6,10 @@ const mainDiv = document.querySelector(".main")
 const newBook = document.querySelector(".newBook")
 const removeBook = document.querySelector(".removeBook")
 const toggleDiv = document.querySelector(".toggleDiv")
+const userTitle = document.querySelector(".userTitle")
+const userAuthor = document.querySelector(".userAuthor")
+const userPages = document.querySelector(".userPages")
 
-const newH3 = document.createElement("h3") // Title
-const newH4 = document.createElement("h4") // Author
-const newInput = document.createElement("input") // Pages
-const newInputRead = document.createElement("input") // Read
-const newButton = document.createElement("button") // Delete Button
 
 // Add new book
 newBook.addEventListener("click", function() {
@@ -20,30 +18,69 @@ newBook.addEventListener("click", function() {
   newDiv.classList.add("cards")
   
   // Calls function that adds user input into the card
-  newDiv.appendChild(newH3)
-  newDiv.appendChild(newH4)
-  newDiv.appendChild(newInput)
-  newDiv.appendChild(newInputRead)
-  newDiv.appendChild(newButton).classList.add("removeBook")
-  
+  populateCard(newDiv)
 })
 
 // Adds to counter of books in library
 newBook.addEventListener("click", function() {
   counter++
   updateCount()
+  clearInput()
 })
 
-// Removes book
-removeBook.addEventListener("click", function() {
-  removeBook.parentElement.remove()
-  counter--
-  updateCount()
-})
+function populateCard(card) {
+  const newH3 = document.createElement("h3") // Title
+  const newH4 = document.createElement("h4") // Author
+  const newH5 = document.createElement("h5") // Pages
+  const newH6 = document.createElement("h5") // Small Text
+  const newInput = document.createElement("input") // Pages
+  const newInputRead = document.createElement("input") // Read
+  const newButton = document.createElement("button") // Delete Button
+  const newDiv = document.createElement("div")
+
+  // Title
+  card.appendChild(newH3).classList.add("title")
+  newH3.textContent = "Title: " + userTitle.value
+  //
+
+  // Author 
+  card.appendChild(newH4).classList.add("author")
+  newH4.textContent = "Author: " + userAuthor.value
+  //
+
+  // Pages
+  card.appendChild(newH5).classList.add("pages")
+  newH5.textContent = "Pages: " + userPages.value
+  //
+
+  // Read Yet Toggle Div
+  card.appendChild(newDiv).classList.add("readYet")
+  newDiv.appendChild(newInputRead).classList.add("read")
+  newInputRead.setAttribute("type", "checkbox")
+  newDiv.appendChild(newH6)
+  newH6.textContent = "Have you read this book yet?"
+  //
+
+  // Remove Button
+  card.appendChild(newButton).classList.add("removeBook")
+  newButton.textContent = "Remove Book"
+  newButton.addEventListener('click', () => {
+    newButton.parentElement.remove();
+    counter--
+    updateCount()
+  });
+  //
+}
 
 // Updates counter
 function updateCount() {
   bookCount.innerHTML = counter
+}
+
+function clearInput() {
+  userTitle.value = ""
+  userAuthor.value = ""
+  userPages.value = ""
 }
 
 function Book(title, author, pages, read) {

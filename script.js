@@ -19,10 +19,8 @@ newBook.addEventListener("click", function() {
   
   // Calls function that adds user input into the card
   populateCard(newDiv)
-})
 
-// Adds to counter of books in library
-newBook.addEventListener("click", function() {
+  // Updates counter and clears input
   counter++
   updateCount()
   clearInput()

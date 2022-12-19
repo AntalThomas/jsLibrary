@@ -31,7 +31,6 @@ function populateCard(card) {
   const newH4 = document.createElement("h4") // Author
   const newH5 = document.createElement("h5") // Pages
   const newH6 = document.createElement("h5") // Small Text
-  const newInput = document.createElement("input") // Pages
   const newInputRead = document.createElement("input") // Read
   const newButton = document.createElement("button") // Delete Button
   const newDiv = document.createElement("div")
